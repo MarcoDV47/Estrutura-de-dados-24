@@ -4,3 +4,8 @@
 	-git remote -v	Mostra histórico de commits
 
 --COMANDOS .NET
+
+Listar versões instaladas	dotnet --list-sdks
+Criar novo projeto console	dotnet new console -n "Aula-1"
+Executar programa		dotnet run
+Executar programa com detalhes	dotnet watch run
