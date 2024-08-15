@@ -1,0 +1,6 @@
+--COMANDOS GIT
+
+	-git status	Verifica os estados
+	-git remote -v	Mostra histórico de commits
+
+--COMANDOS .NET
