@@ -3,23 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BinaryTree
+namespace ExercicioTree
 {
-    public class TreeNode<T>
+    public class Node
     {
-        public T Data { get; set; }
-        public TreeNode<T> Parent { get; set; }
-        public List<TreeNode<T>> Children { get; set; }
-        public int GetHeight()
-        {
-            int height = 1;
-            TreeNode<T> current = this;
-            while (current.Parent != null)
-            {
-                height++;
-                current = current.Parent;
-            }
-            return height;
-        }
+        public Person? Data { get; set; }
+        public Node? Parent { get; set; }
+        public List<Node>? Children { get; set;} = new List<Node>();
     }
 }

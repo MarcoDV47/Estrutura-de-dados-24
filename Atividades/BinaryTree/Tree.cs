@@ -3,10 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BinaryTree
+namespace ExercicioTree
 {
-    public class Tree<T>
+    public class Tree
     {
-        public TreeNode<T> Root { get; set; }
+        public Node? Root { get; set; }
+
+        public void PrintTree(Node node)
+        {
+
+            Console.Write($"Name: {node.Data?.Name}\n");
+            Console.Write($"Role: {node.Data?.Role}\n");
+            Console.Write("--\n");
+
+            if (node.Children!.Count() > 0)
+            {
+                foreach (var i in node.Children!)
+                {
+                    PrintTree(i);
+                }
+            }
+        }
     }
 }

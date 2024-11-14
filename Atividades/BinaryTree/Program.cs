@@ -1,55 +1,43 @@
-﻿using BinaryTree;
+﻿using ExercicioTree;
 
-Tree<int> tree = new Tree<int>();
-tree.Root = new TreeNode<int>() { Data = 100 };
-tree.Root.Children = new List<TreeNode<int>>
+Tree tree = new Tree();
+
+tree.Root = new Node()
 {
-new TreeNode<int>() { Data = 50, Parent = tree.Root },
-new TreeNode<int>() { Data = 1, Parent = tree.Root },
-new TreeNode<int>() { Data = 150, Parent = tree.Root }
-};
-tree.Root.Children[2].Children = new List<TreeNode<int>>()
-{
-new TreeNode<int>()
-{ Data = 30, Parent = tree.Root.Children[2] }
+    Data = new Person() { Name = "Marcin Jamro", Role = "CEO" }
 };
 
-Tree<Person> company = new Tree<Person>();
-company.Root = new TreeNode<Person>()
-{
-    Data = new Person(100, "Marcin Jamro", "CEO"),
-    Parent = null
-};
-company.Root.Children = new List<TreeNode<Person>>()
-{
-new TreeNode<Person>()
-{
-Data = new Person(1, "John Smith", "Head of Development"),
-Parent = company.Root
-},
-new TreeNode<Person>()
-{
-Data = new Person(50, "Mary Fox", "Head of Research"),
-Parent = company.Root
-},
-new TreeNode<Person>()
-{
-Data = new Person(150, "Lily Smith", "Head of Sales"),
-Parent = company.Root
-}
-};
-company.Root.Children[2].Children = new List<TreeNode<Person>>()
-{
-new TreeNode<Person>()
-{
-    Data = new Person(30, "Anthony Black", "Sales Specialist"),
-Parent = company.Root.Children[2]
-}
+tree.Root.Children = new List<Node>(){
+    new Node(){Data = new Person (){Name = "John Smith", Role="Head of Develpment"}, Parent = tree.Root},
+    new Node(){Data = new Person (){Name = "Mary Fox", Role="Head of Research"}, Parent = tree.Root},
+    new Node(){Data = new Person (){Name = "Lily Smith", Role="Head of Sales"}, Parent = tree.Root}
 };
 
-foreach (var i in company.Root.Children)
-{
-    Console.WriteLine(i);
+tree.Root.Children[0].Children = new List<Node>(){ // Jonh Smith
+    new Node(){Data = new Person (){Name = "Chris Morris", Role="Senior Develpment"}, Parent = tree.Root.Children[0]}
+};
 
-}
+tree.Root.Children[0].Children[0].Children = new List<Node>(){ // Chris Morris
+    new Node(){Data = new Person (){Name = "Eric Green", Role="Junior Develpment"}, Parent = tree.Root.Children[0].Children[0]},
+    new Node(){Data = new Person (){Name = "Ashley Lopez", Role="Junior Develpment"}, Parent = tree.Root.Children[0].Children[0]}
+};
+tree.Root.Children[0].Children[0].Children[1].Children = new List<Node>(){// Ashley Lopes
+    new Node(){Data = new Person (){Name = "Emily Young", Role="Developer Intern"}, Parent = tree.Root.Children[0].Children[0].Children[1]}
+};
 
+tree.Root.Children[1].Children = new List<Node>(){ //Mary fox
+    new Node(){Data = new Person (){Name = "Jimmy Stewart", Role="Senior Researcher"}, Parent = tree.Root.Children[1]},
+    new Node(){Data = new Person (){Name = "Andy Wood", Role="Senior Researcher"}, Parent = tree.Root.Children[1]}
+};
+
+tree.Root.Children[2].Children = new List<Node>(){//Lily Smith
+    new Node(){Data = new Person (){Name = "Anthony Black", Role="Senior Sales Specialist"}, Parent = tree.Root.Children[2]},
+    new Node(){Data = new Person (){Name = "Angela Evans", Role="Senior Sales Specialist"}, Parent = tree.Root.Children[2]},
+    new Node(){Data = new Person (){Name = "Tommy Butler", Role="Senior Account Manager"}, Parent = tree.Root.Children[2]}
+};
+tree.Root.Children[2].Children[0].Children = new List<Node>(){
+    new Node() {Data = new Person (){Name = "Paula Scott", Role = "Junior Sales Specialist"}, Parent = tree.Root.Children[2].Children[0]},
+    new Node() {Data = new Person (){Name = "Sarah Watson", Role = "Junior Sales Specialist"}, Parent = tree.Root.Children[2].Children[0]},
+};
+
+tree.PrintTree(tree.Root);
